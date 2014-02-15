@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaveDwellers", "CaveDwellers\CaveDwellers.csproj", "{8B9A6685-9C4D-4268-BAEE-80971AB7B705}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaveDwellersTest", "CaveDwellersTest\CaveDwellersTest.csproj", "{6F88BF8D-EC82-4186-B5FA-ABA055EDEEB7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{62D89DF6-F58D-4188-A13C-803D8B86CEF0}"
+	ProjectSection(SolutionItems) = preProject
+		CaveDwellers.vsmdi = CaveDwellers.vsmdi
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = CaveDwellers.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8B9A6685-9C4D-4268-BAEE-80971AB7B705}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{8B9A6685-9C4D-4268-BAEE-80971AB7B705}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{8B9A6685-9C4D-4268-BAEE-80971AB7B705}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{8B9A6685-9C4D-4268-BAEE-80971AB7B705}.Debug|x86.ActiveCfg = Debug|x86
+		{8B9A6685-9C4D-4268-BAEE-80971AB7B705}.Debug|x86.Build.0 = Debug|x86
+		{8B9A6685-9C4D-4268-BAEE-80971AB7B705}.Release|Any CPU.ActiveCfg = Release|x86
+		{8B9A6685-9C4D-4268-BAEE-80971AB7B705}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{8B9A6685-9C4D-4268-BAEE-80971AB7B705}.Release|Mixed Platforms.Build.0 = Release|x86
+		{8B9A6685-9C4D-4268-BAEE-80971AB7B705}.Release|x86.ActiveCfg = Release|x86
+		{8B9A6685-9C4D-4268-BAEE-80971AB7B705}.Release|x86.Build.0 = Release|x86
+		{6F88BF8D-EC82-4186-B5FA-ABA055EDEEB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F88BF8D-EC82-4186-B5FA-ABA055EDEEB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F88BF8D-EC82-4186-B5FA-ABA055EDEEB7}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{6F88BF8D-EC82-4186-B5FA-ABA055EDEEB7}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{6F88BF8D-EC82-4186-B5FA-ABA055EDEEB7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6F88BF8D-EC82-4186-B5FA-ABA055EDEEB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F88BF8D-EC82-4186-B5FA-ABA055EDEEB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F88BF8D-EC82-4186-B5FA-ABA055EDEEB7}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{6F88BF8D-EC82-4186-B5FA-ABA055EDEEB7}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{6F88BF8D-EC82-4186-B5FA-ABA055EDEEB7}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,5 +1,6 @@
 using System.Windows;
 using CaveDwellers.Core;
+using CaveDwellers.Resources;
 
 namespace CaveDwellers.Positionables
 {
@@ -12,6 +13,11 @@ namespace CaveDwellers.Positionables
 
         public void SetWorldMatrix(WorldMatrix worldMatrix)
         {
+        }
+
+        public ImageName Sprite
+        {
+            get { return Images.Stone01; }
         }
     }
 }

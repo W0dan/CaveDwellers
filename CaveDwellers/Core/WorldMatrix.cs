@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -8,6 +9,11 @@ namespace CaveDwellers.Core
     {
         private readonly Dictionary<IPositionable, Point> _locations = new Dictionary<IPositionable, Point>();
         private readonly Dictionary<Point, IPositionable> _objects = new Dictionary<Point, IPositionable>();
+
+        public void Add(int x, int y, IPositionable @object)
+        {
+            Add(new Point(x, y), @object);
+        }
 
         public void Add(Point point, IPositionable @object)
         {
@@ -25,6 +31,11 @@ namespace CaveDwellers.Core
             }
 
             _locations.Add(@object, point);
+        }
+
+        public IPositionable GetObjectAt(int x, int y)
+        {
+            return GetObjectAt(new Point(x, y));
         }
 
         public IPositionable GetObjectAt(Point point)
@@ -81,6 +92,11 @@ namespace CaveDwellers.Core
             RemoveFromLocation(@object);
             Add(newLocation, @object);
 
+        }
+
+        public IEnumerable<KeyValuePair<Point, IPositionable>> GetObjects()
+        {
+            return _objects;
         }
     }
 }

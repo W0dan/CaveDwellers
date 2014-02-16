@@ -56,6 +56,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Resources\ImageName.cs" />
+    <Compile Include="Resources\Images.cs" />
+    <Compile Include="Resources\ResourceProvider.cs" />
+    <Compile Include="UI\GameDrawing.cs" />
+    <Compile Include="UI\GamePresenter.cs" />
+    <Compile Include="UI\IGamePresenter.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -100,7 +106,18 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Levels\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\tile_0_0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Ghost.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Smiley Angry.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

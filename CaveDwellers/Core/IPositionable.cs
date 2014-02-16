@@ -1,4 +1,5 @@
 using System.Windows;
+using CaveDwellers.Resources;
 
 namespace CaveDwellers.Core
 {
@@ -6,5 +7,6 @@ namespace CaveDwellers.Core
     {
         Size Size { get; }
         void SetWorldMatrix(WorldMatrix worldMatrix);
+        ImageName Sprite { get; }
     }
 }

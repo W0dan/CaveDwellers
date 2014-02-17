@@ -21,12 +21,6 @@ namespace CaveDwellersTest.Given_a_Level_10x10
         }
 
         [Test]
-        public void It_contains_a_world()
-        {
-            Assert.True(_level.GetObjects().Any());
-        }
-
-        [Test]
         public void It_contains_a_wall_surrounding_it()
         {
             var objects = _level.GetObjects().Where(o => o.Key == new Point(0, 0)

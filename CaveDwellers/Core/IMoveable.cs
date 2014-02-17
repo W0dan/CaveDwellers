@@ -4,6 +4,5 @@ namespace CaveDwellers.Core
     {
         int Speed { get; }
         void Move(Direction direction);
-        void SetWorldMatrix(WorldMatrix worldMatrix);
     }
 }

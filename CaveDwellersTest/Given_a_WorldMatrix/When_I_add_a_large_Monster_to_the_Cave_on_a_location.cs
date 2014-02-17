@@ -19,7 +19,7 @@ namespace CaveDwellersTest.Given_a_WorldMatrix
         protected override void Arrange()
         {
             _worldMatrix = new WorldMatrix();
-            _theMonster = new LargeMonster();
+            _theMonster = new LargeMonster(_worldMatrix);
         }
 
         [Test]

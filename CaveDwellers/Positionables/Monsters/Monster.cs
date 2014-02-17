@@ -6,7 +6,12 @@ namespace CaveDwellers.Positionables.Monsters
 {
     public class Monster : IPositionable, IMoveable
     {
-        private WorldMatrix _worldMatrix;
+        private readonly WorldMatrix _worldMatrix;
+
+        public Monster(WorldMatrix worldMatrix)
+        {
+            _worldMatrix = worldMatrix;
+        }
 
         public virtual Size Size
         {
@@ -18,11 +23,6 @@ namespace CaveDwellers.Positionables.Monsters
         public void Move(Direction direction)
         {
             _worldMatrix.Move(this, direction, Speed);
-        }
-
-        public void SetWorldMatrix(WorldMatrix worldMatrix)
-        {
-            _worldMatrix = worldMatrix;
         }
 
         public ImageName Sprite

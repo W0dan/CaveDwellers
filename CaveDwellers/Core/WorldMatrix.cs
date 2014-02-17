@@ -17,7 +17,7 @@ namespace CaveDwellers.Core
 
         public void Add(Point point, IPositionable @object)
         {
-            @object.SetWorldMatrix(this);
+            //@object.SetWorldMatrix(this);
             var wOffset = (@object.Size.Width - @object.Size.Width % 2) / 2;
             var hOffset = (@object.Size.Height - @object.Size.Height % 2) / 2;
 

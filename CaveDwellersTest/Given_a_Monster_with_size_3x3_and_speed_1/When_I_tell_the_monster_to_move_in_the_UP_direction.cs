@@ -15,7 +15,7 @@ namespace CaveDwellersTest.Given_a_Monster_with_size_3x3_and_speed_1
         protected override void Arrange()
         {
             _worldMatrix = new WorldMatrix();
-            _monster = new LargeMonster();
+            _monster = new LargeMonster(_worldMatrix);
             _worldMatrix.Add(_oldLocation, _monster);
         }
 

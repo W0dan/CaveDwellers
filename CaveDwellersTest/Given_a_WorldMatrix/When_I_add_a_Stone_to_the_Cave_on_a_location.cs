@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using CaveDwellers.Core;
 using CaveDwellers.Positionables;
+using CaveDwellersTest.StonesForTest;
 using NUnit.Framework;
 
 namespace CaveDwellersTest.Given_a_WorldMatrix
@@ -13,7 +14,7 @@ namespace CaveDwellersTest.Given_a_WorldMatrix
         protected override void Arrange()
         {
             _worldMatrix = new WorldMatrix();
-            _theStone = new Stone();
+            _theStone = new Stone1x1();
         }
 
         protected override void Act()

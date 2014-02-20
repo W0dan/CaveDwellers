@@ -37,6 +37,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -56,6 +59,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Core\GameLoop.cs" />
+    <Compile Include="Core\GameTime.cs" />
+    <Compile Include="Core\IWantToBeNotifiedOfGameTimeElapsedEvents.cs" />
     <Compile Include="Resources\ImageName.cs" />
     <Compile Include="Resources\Images.cs" />
     <Compile Include="Resources\ResourceProvider.cs" />

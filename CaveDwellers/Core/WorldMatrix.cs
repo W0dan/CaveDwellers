@@ -1,29 +1,32 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+using CaveDwellers.Positionables.Monsters;
 
 namespace CaveDwellers.Core
 {
-    public class WorldMatrix
+    public class WorldMatrix : IWantToBeNotifiedOfGameTimeElapsedEvents
     {
+        private const int Scale = 1;
         private readonly Dictionary<IPositionable, Point> _locations = new Dictionary<IPositionable, Point>();
         private readonly Dictionary<Point, IPositionable> _objects = new Dictionary<Point, IPositionable>();
 
         public void Add(int x, int y, IPositionable @object)
         {
-            Add(new Point(x, y), @object);
+            Add(new Point(x*Scale, y*Scale), @object);
         }
 
         public void Add(Point point, IPositionable @object)
         {
-            //@object.SetWorldMatrix(this);
-            var wOffset = (@object.Size.Width - @object.Size.Width % 2) / 2;
-            var hOffset = (@object.Size.Height - @object.Size.Height % 2) / 2;
+            var width = @object.Size.Width*Scale;
+            var height = @object.Size.Height*Scale;
 
-            for (var w = 0; w < @object.Size.Width; w++)
+            var wOffset = (width - width % 2) / 2;
+            var hOffset = (height - height % 2) / 2;
+
+            for (var w = 0; w < width; w++)
             {
-                for (var h = 0; h < @object.Size.Height; h++)
+                for (var h = 0; h < height; h++)
                 {
                     var p = new Point(point.X - wOffset + w, point.Y - hOffset + h);
                     _objects.Add(p, @object);
@@ -31,6 +34,24 @@ namespace CaveDwellers.Core
             }
 
             _locations.Add(@object, point);
+        }
+
+        private IPositionable IsCollision(IPositionable @object, Point newLocation)
+        {
+            var wOffset = (@object.Size.Width - @object.Size.Width % 2) / 2;
+            var hOffset = (@object.Size.Height - @object.Size.Height % 2) / 2;
+
+            for (var w = 0; w < @object.Size.Width; w++)
+            {
+                for (var h = 0; h < @object.Size.Height; h++)
+                {
+                    var p = new Point(newLocation.X - wOffset + w, newLocation.Y - hOffset + h);
+                    if (_objects.ContainsKey(p) && _objects[p] != null && _objects[p] != @object)
+                        return _objects[p];
+                }
+            }
+
+            return null;
         }
 
         public IPositionable GetObjectAt(int x, int y)
@@ -67,7 +88,7 @@ namespace CaveDwellers.Core
             if (!p.HasValue)
                 return;
 
-            var oldLocation = p.Value;
+            var oldLocation = new Point(p.Value.X, p.Value.Y);
             Point newLocation;
 
             switch (direction)
@@ -86,17 +107,32 @@ namespace CaveDwellers.Core
                     break;
                 default:
                     return;
-
             }
+
+            if (IsCollision(@object, newLocation) != null)
+                return;
 
             RemoveFromLocation(@object);
             Add(newLocation, @object);
 
         }
 
-        public IEnumerable<KeyValuePair<Point, IPositionable>> GetObjects()
+        public IEnumerable<KeyValuePair<IPositionable, Point>> GetObjects()
         {
-            return _objects;
+            return _locations;
+        }
+
+        private IEnumerable<T> GetObjects<T>()
+        {
+            return (from posit in _locations where posit.Key is T select (T)posit.Key).ToList();
+        }
+
+        public void Notify(GameTime gameTime)
+        {
+            foreach (var m in GetObjects<Monster>())
+            {
+                m.Move();
+            }
         }
     }
 }

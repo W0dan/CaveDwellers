@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using CaveDwellers.Core;
 using CaveDwellers.Positionables.Monsters;
+using CaveDwellersTest.MonstersForTest;
 using NUnit.Framework;
 
 namespace CaveDwellersTest.Given_a_Monster_with_size_1x1_and_speed_1
@@ -15,7 +16,7 @@ namespace CaveDwellersTest.Given_a_Monster_with_size_1x1_and_speed_1
         protected override void Arrange()
         {
             _worldMatrix = new WorldMatrix();
-            _monster = new Monster(_worldMatrix);
+            _monster = new Monster1x1(_worldMatrix);
             _worldMatrix.Add(_oldLocation, _monster);
         }
 

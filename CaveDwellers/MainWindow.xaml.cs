@@ -8,7 +8,7 @@ namespace CaveDwellers
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, IWantToBeNotifiedOfGameTimeElapsedEvents
     {
         public MainWindow()
         {
@@ -19,7 +19,7 @@ namespace CaveDwellers
 
         private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
-            _gamePresenter = new GamePresenter();
+            _gamePresenter = new GamePresenter(this);
         }
 
         private void TekenBlad_OnKeyDown(object sender, KeyEventArgs e)
@@ -65,7 +65,10 @@ namespace CaveDwellers
                         break;
                 }
             }
+        }
 
+        public void Notify(GameTime gameTime)
+        {
             GameCanvas.Source = _gamePresenter.DrawGame();
         }
     }

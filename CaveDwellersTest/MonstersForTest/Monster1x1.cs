@@ -4,14 +4,12 @@ using CaveDwellers.Positionables.Monsters;
 
 namespace CaveDwellersTest.MonstersForTest
 {
-    public class FastMonster : Monster
+    public class Monster1x1 : Monster
     {
-        public FastMonster(WorldMatrix worldMatrix)
+        public Monster1x1(WorldMatrix worldMatrix)
             : base(worldMatrix)
         {
         }
-
-        public override int Speed { get { return 3; } }
 
         public override Size Size { get { return new Size(1, 1); } }
     }

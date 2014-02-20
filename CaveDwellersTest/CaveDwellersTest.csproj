@@ -64,7 +64,9 @@
     <Compile Include="MonstersForTest\FastMonster.cs" />
     <Compile Include="MonstersForTest\LargeMonster.cs" />
     <Compile Include="MonstersForTest\MediumSizedMonster.cs" />
+    <Compile Include="MonstersForTest\Monster1x1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StonesForTest\Stone1x1.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -3,6 +3,8 @@ using System.Windows;
 using CaveDwellers.Core;
 using CaveDwellers.Positionables;
 using CaveDwellers.Positionables.Monsters;
+using CaveDwellersTest.MonstersForTest;
+using CaveDwellersTest.StonesForTest;
 
 namespace CaveDwellersTest.LevelsForTest
 {
@@ -14,23 +16,33 @@ namespace CaveDwellersTest.LevelsForTest
         {
             for (var x = 0; x < 10; x++)
             {
-                _world.Add(x, 0, new Stone());
-                _world.Add(x, 9, new Stone());
+                _world.Add(x, 0, CreateStone());
+                _world.Add(x, 9, CreateStone());
             }
 
             for (var y = 1; y < 9; y++)
             {
-                _world.Add(0, y, new Stone());
-                _world.Add(9, y, new Stone());
+                _world.Add(0, y, CreateStone());
+                _world.Add(9, y, CreateStone());
             }
 
-            _world.Add(3, 3, new Monster(_world));
-            _world.Add(3, 7, new Monster(_world));
-            _world.Add(7, 3, new Monster(_world));
-            _world.Add(7, 7, new Monster(_world));
+            _world.Add(3, 3, CreateMonster());
+            _world.Add(3, 7, CreateMonster());
+            _world.Add(7, 3, CreateMonster());
+            _world.Add(7, 7, CreateMonster());
         }
 
-        public IEnumerable<KeyValuePair<Point, IPositionable>> GetObjects()
+        private Monster CreateMonster()
+        {
+            return new Monster1x1(_world);
+        }
+
+        private static Stone CreateStone()
+        {
+            return new Stone1x1();
+        }
+
+        public IEnumerable<KeyValuePair<IPositionable, Point>> GetObjects()
         {
             return _world.GetObjects();
         }

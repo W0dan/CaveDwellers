@@ -6,9 +6,9 @@ namespace CaveDwellers.Positionables
 {
     public class Stone : IPositionable
     {
-        public Size Size
+        public virtual Size Size
         {
-            get { return new Size(1, 1); }
+            get { return new Size(10, 10); }
         }
 
         public void SetWorldMatrix(WorldMatrix worldMatrix)

@@ -12,7 +12,7 @@ namespace CaveDwellers.Mathematics
 
         private static int ToInt(this double number)
         {
-            return (int) number;
+            return (int)number;
         }
 
         public static double CalculateDirection(Point a, Point b)
@@ -20,14 +20,17 @@ namespace CaveDwellers.Mathematics
             var dX = a.X - b.X;
             var dY = a.Y - b.Y;
 
-            return dX.ToInt() <= 0 
-                ? -(Math.Atan(dY/dX).ToDegrees() - 90) 
-                : 360 + (Math.Atan(dY/dX).ToDegrees() - 90);
+            return dX.ToInt() <= 0
+                ? -(Math.Atan(dY / dX).ToDegrees() - 90)
+                : 360 + (Math.Atan(dY / dX).ToDegrees() - 90);
         }
 
         public static double CalculateDistance(Point a, Point b)
         {
-            return 0;
+            var dY = b.Y - a.Y;
+            var dX = b.X - a.X;
+
+            return Math.Sqrt(Math.Pow(dX, 2) + Math.Pow(dY, 2));
         }
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+using CaveDwellers.Mathematics;
 using CaveDwellers.Positionables.Monsters;
 
 namespace CaveDwellers.Core
@@ -89,23 +90,8 @@ namespace CaveDwellers.Core
             var currentLocation = _locations[@object];
             var destination = @object.NextDestination;
 
-            var distance = CalculateDistance(currentLocation, destination);
-            var direction = CalculateDirection(currentLocation, destination);
-        }
-
-        private static double CalculateDirection(Point a, Point b)
-        {
-            var dX = a.X - b.X;
-            var dY = a.Y - b.Y;
-
-            return Math.Atan(dY/dX);
-        }
-
-        private static double CalculateDistance(Point a, Point b)
-        {
-            var dX = a.X - b.X;
-            var dY = a.Y - b.Y;
-            return Math.Sqrt(Math.Pow(dX, 2) + Math.Pow(dY, 2));
+            var distance = Calculator.CalculateDistance(currentLocation, destination);
+            var direction = Calculator.CalculateDirection(currentLocation, destination);
         }
 
         public void Move(IPositionable @object, Direction direction, int speed)

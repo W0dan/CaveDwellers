@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -13,13 +14,13 @@ namespace CaveDwellers.Core
 
         public void Add(int x, int y, IPositionable @object)
         {
-            Add(new Point(x*Scale, y*Scale), @object);
+            Add(new Point(x * Scale, y * Scale), @object);
         }
 
         public void Add(Point point, IPositionable @object)
         {
-            var width = @object.Size.Width*Scale;
-            var height = @object.Size.Height*Scale;
+            var width = @object.Size.Width * Scale;
+            var height = @object.Size.Height * Scale;
 
             var wOffset = (width - width % 2) / 2;
             var hOffset = (height - height % 2) / 2;
@@ -82,6 +83,31 @@ namespace CaveDwellers.Core
             _locations.Remove(@object);
         }
 
+        public void Move<T>(T @object)
+            where T : IMoveable, IPositionable
+        {
+            var currentLocation = _locations[@object];
+            var destination = @object.NextDestination;
+
+            var distance = CalculateDistance(currentLocation, destination);
+            var direction = CalculateDirection(currentLocation, destination);
+        }
+
+        private static double CalculateDirection(Point a, Point b)
+        {
+            var dX = a.X - b.X;
+            var dY = a.Y - b.Y;
+
+            return Math.Atan(dY/dX);
+        }
+
+        private static double CalculateDistance(Point a, Point b)
+        {
+            var dX = a.X - b.X;
+            var dY = a.Y - b.Y;
+            return Math.Sqrt(Math.Pow(dX, 2) + Math.Pow(dY, 2));
+        }
+
         public void Move(IPositionable @object, Direction direction, int speed)
         {
             var p = GetLocationOf(@object);
@@ -131,7 +157,7 @@ namespace CaveDwellers.Core
         {
             foreach (var m in GetObjects<Monster>())
             {
-                m.Move();
+                m.DoAction();
             }
         }
     }

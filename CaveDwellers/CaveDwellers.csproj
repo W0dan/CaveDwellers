@@ -62,6 +62,7 @@
     <Compile Include="Core\GameLoop.cs" />
     <Compile Include="Core\GameTime.cs" />
     <Compile Include="Core\IWantToBeNotifiedOfGameTimeElapsedEvents.cs" />
+    <Compile Include="Mathematics\Calculator.cs" />
     <Compile Include="Resources\ImageName.cs" />
     <Compile Include="Resources\Images.cs" />
     <Compile Include="Resources\ResourceProvider.cs" />

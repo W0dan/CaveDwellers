@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="AAATest.cs" />
     <Compile Include="Given_a_Level_10x10\When_it_is constructed.cs" />
+    <Compile Include="Given_a_Mathematics_Calculator\When_CalculateDirection_is_called.cs" />
     <Compile Include="Given_a_Monster_with_size_1x1_and_speed_3\When_I_tell_the_monster_to_move_in_the_UP_direction.cs" />
     <Compile Include="Given_a_Monster_with_size_3x3_and_speed_1\When_I_tell_the_monster_to_move_in_the_UP_direction.cs" />
     <Compile Include="Given_a_Monster_with_size_1x1_and_speed_1\When_I_tell_the_monster_to_move_in_the_RIGHT_direction.cs" />

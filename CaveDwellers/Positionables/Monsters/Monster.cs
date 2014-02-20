@@ -56,5 +56,17 @@ namespace CaveDwellers.Positionables.Monsters
         {
             get { return Images.Ghost; }
         }
+
+        public void DoAction()
+        {
+            var x = Randomizer.Next(100);
+            var y = Randomizer.Next(100);
+            NextDestination = new Point(x, y);
+            IsMoving = true;
+        }
+
+        public Point NextDestination { get; private set; }
+
+        public bool IsMoving { get; private set; }
     }
 }

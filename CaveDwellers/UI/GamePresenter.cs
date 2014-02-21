@@ -138,6 +138,8 @@ namespace CaveDwellers.UI
             _world.Add(175, 150, new Monster(_world));
             _world.Add(150, 175, new Monster(_world));
 
+            //_world.Add(100, 100, new Monster(_world));
+
             _gameLoop.Start();
         }
 

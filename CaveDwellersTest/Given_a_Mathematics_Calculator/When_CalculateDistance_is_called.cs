@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace CaveDwellersTest.Given_a_Mathematics_Calculator
 {
-    public class When_calculate_distance_is_called
+    public class When_CalculateDistance_is_called
     {
         [Test]
         public void Then_it_gets_10_for_2_points_that_have_the_same_x_but_differ_10_in_y()

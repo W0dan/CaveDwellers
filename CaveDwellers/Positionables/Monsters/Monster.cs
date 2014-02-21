@@ -21,52 +21,35 @@ namespace CaveDwellers.Positionables.Monsters
             get { return new Size(10, 10); }
         }
 
-        public virtual int Speed { get { return 1; } }
-
-        public void Move(Direction direction)
-        {
-            _worldMatrix.Move(this, direction, Speed);
-        }
-
-        public void Move()
-        {
-            var randomNumber = Randomizer.Next(4);
-            Direction direction = 0;
-
-            switch (randomNumber)
-            {
-                case 0:
-                    direction = Direction.Up;
-                    break;
-                case 1:
-                    direction = Direction.Down;
-                    break;
-                case 2:
-                    direction = Direction.Left;
-                    break;
-                case 3:
-                    direction = Direction.Right;
-                    break;
-            }
-
-            Move(direction);
-        }
+        public virtual int Speed { get { return 70; } }
 
         public ImageName Sprite
         {
             get { return Images.Ghost; }
         }
 
+        public void StopMoving()
+        {
+            IsMoving = false;
+        }
+
         public void DoAction()
         {
-            var x = Randomizer.Next(100);
-            var y = Randomizer.Next(100);
+            if (IsMoving)
+            {
+                _worldMatrix.Move(this);
+                return;
+            }
+
+            var x = Randomizer.Next(1000);
+            var y = Randomizer.Next(1000);
             NextDestination = new Point(x, y);
             IsMoving = true;
+            _worldMatrix.Move(this);
         }
 
         public Point NextDestination { get; private set; }
 
-        public bool IsMoving { get; private set; }
+        private bool IsMoving { get; set; }
     }
 }

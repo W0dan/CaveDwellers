@@ -11,7 +11,7 @@ namespace CaveDwellersTest.Given_a_Mathematics_Calculator
         {
             var direction = Calculator.CalculateDirection(new Point(5, 7), new Point(10, 12));
 
-            Assert.AreEqual(45, direction);
+            Assert.AreEqual(45D.ToRadians(), direction);
         }
 
         [Test]
@@ -19,7 +19,7 @@ namespace CaveDwellersTest.Given_a_Mathematics_Calculator
         {
             var direction = Calculator.CalculateDirection(new Point(0, 0), new Point(0, -7));
 
-            Assert.AreEqual(0, direction);
+            Assert.AreEqual(0D.ToRadians(), direction);
         }
 
         [Test]
@@ -27,7 +27,7 @@ namespace CaveDwellersTest.Given_a_Mathematics_Calculator
         {
             var direction = Calculator.CalculateDirection(new Point(0, 0), new Point(5, 0));
 
-            Assert.AreEqual(90, direction);
+            Assert.AreEqual(90D.ToRadians(), direction);
         }
 
         [Test]
@@ -35,7 +35,7 @@ namespace CaveDwellersTest.Given_a_Mathematics_Calculator
         {
             var direction = Calculator.CalculateDirection(new Point(0, 0), new Point(0, 7));
 
-            Assert.AreEqual(180, direction);
+            Assert.AreEqual(180D.ToRadians(), direction);
         }
 
         [Test]
@@ -43,7 +43,7 @@ namespace CaveDwellersTest.Given_a_Mathematics_Calculator
         {
             var direction = Calculator.CalculateDirection(new Point(0, 0), new Point(-7, 0));
 
-            Assert.AreEqual(270, direction);
+            Assert.AreEqual(270D.ToRadians(), direction);
         }
 
         [Test]
@@ -51,7 +51,7 @@ namespace CaveDwellersTest.Given_a_Mathematics_Calculator
         {
             var direction = Calculator.CalculateDirection(new Point(0, 0), new Point(-7, 7));
 
-            Assert.AreEqual(225, direction);
+            Assert.AreEqual(225D.ToRadians(), direction);
         }
 
         [Test]
@@ -59,7 +59,7 @@ namespace CaveDwellersTest.Given_a_Mathematics_Calculator
         {
             var direction = Calculator.CalculateDirection(new Point(0, 0), new Point(-7, -7));
 
-            Assert.AreEqual(315, direction);
+            Assert.AreEqual(315D.ToRadians(), direction);
         }
 
     }

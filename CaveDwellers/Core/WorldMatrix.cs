@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -12,6 +11,7 @@ namespace CaveDwellers.Core
         private const int Scale = 1;
         private readonly Dictionary<IPositionable, Point> _locations = new Dictionary<IPositionable, Point>();
         private readonly Dictionary<Point, IPositionable> _objects = new Dictionary<Point, IPositionable>();
+        private int _timeElapsed;
 
         public void Add(int x, int y, IPositionable @object)
         {
@@ -92,41 +92,19 @@ namespace CaveDwellers.Core
 
             var distance = Calculator.CalculateDistance(currentLocation, destination);
             var direction = Calculator.CalculateDirection(currentLocation, destination);
-        }
 
-        public void Move(IPositionable @object, Direction direction, int speed)
-        {
-            var p = GetLocationOf(@object);
-            if (!p.HasValue)
-                return;
-
-            var oldLocation = new Point(p.Value.X, p.Value.Y);
-            Point newLocation;
-
-            switch (direction)
+            var newLocation = Calculator.CalculateNewPosition(currentLocation, direction, @object.Speed, _timeElapsed);
+            var distanceTraveled = Calculator.CalculateDistance(currentLocation, newLocation);
+            
+            if (distanceTraveled >= distance || IsCollision(@object, newLocation) != null)
             {
-                case Direction.Up:
-                    newLocation = new Point(oldLocation.X, oldLocation.Y - speed);
-                    break;
-                case Direction.Down:
-                    newLocation = new Point(oldLocation.X, oldLocation.Y + speed);
-                    break;
-                case Direction.Left:
-                    newLocation = new Point(oldLocation.X - speed, oldLocation.Y);
-                    break;
-                case Direction.Right:
-                    newLocation = new Point(oldLocation.X + speed, oldLocation.Y);
-                    break;
-                default:
-                    return;
+                @object.StopMoving();
             }
-
-            if (IsCollision(@object, newLocation) != null)
-                return;
-
-            RemoveFromLocation(@object);
-            Add(newLocation, @object);
-
+            else
+            {
+                RemoveFromLocation(@object);
+                Add(newLocation, @object);   
+            }
         }
 
         public IEnumerable<KeyValuePair<IPositionable, Point>> GetObjects()
@@ -141,6 +119,7 @@ namespace CaveDwellers.Core
 
         public void Notify(GameTime gameTime)
         {
+            _timeElapsed = gameTime.MillisecondsElapsed;
             foreach (var m in GetObjects<Monster>())
             {
                 m.DoAction();

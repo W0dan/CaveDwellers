@@ -51,17 +51,12 @@
     <Compile Include="AAATest.cs" />
     <Compile Include="Given_a_Level_10x10\When_it_is constructed.cs" />
     <Compile Include="Given_a_Mathematics_Calculator\When_CalculateDirection_is_called.cs" />
-    <Compile Include="Given_a_Mathematics_Calculator\When_calculate_distance_is_called.cs" />
-    <Compile Include="Given_a_Monster_with_size_1x1_and_speed_3\When_I_tell_the_monster_to_move_in_the_UP_direction.cs" />
-    <Compile Include="Given_a_Monster_with_size_3x3_and_speed_1\When_I_tell_the_monster_to_move_in_the_UP_direction.cs" />
-    <Compile Include="Given_a_Monster_with_size_1x1_and_speed_1\When_I_tell_the_monster_to_move_in_the_RIGHT_direction.cs" />
-    <Compile Include="Given_a_Monster_with_size_1x1_and_speed_1\When_I_tell_the_monster_to_move_in_the_LEFT_direction.cs" />
-    <Compile Include="Given_a_Monster_with_size_1x1_and_speed_1\When_I_tell_the_monster_to_move_in_the_DOWN_direction.cs" />
+    <Compile Include="Given_a_Mathematics_Calculator\When_CalculateNewPosition_is_called.cs" />
+    <Compile Include="Given_a_Mathematics_Calculator\When_CalculateDistance_is_called.cs" />
     <Compile Include="Given_a_WorldMatrix\When_I_add_a_meduim_sized_Monster_to_the_Cave_on_a_location.cs" />
     <Compile Include="Given_a_WorldMatrix\When_I_add_a_large_Monster_to_the_Cave_on_a_location.cs" />
     <Compile Include="Given_a_WorldMatrix\When_I_add_a_Monster_to_the_Cave_on_a_location.cs" />
     <Compile Include="Given_a_WorldMatrix\When_I_add_a_Stone_to_the_Cave_on_a_location.cs" />
-    <Compile Include="Given_a_Monster_with_size_1x1_and_speed_1\When_I_tell_the_monster_to_move_in_the_UP_direction.cs" />
     <Compile Include="LevelsForTest\TenByTenLevel.cs" />
     <Compile Include="MonstersForTest\FastMonster.cs" />
     <Compile Include="MonstersForTest\LargeMonster.cs" />
@@ -79,7 +74,11 @@
       <Name>CaveDwellers</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Given_a_Monster_with_size_1x1_and_speed_1\" />
+    <Folder Include="Given_a_Monster_with_size_1x1_and_speed_3\" />
+    <Folder Include="Given_a_Monster_with_size_3x3_and_speed_1\" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

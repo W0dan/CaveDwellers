@@ -7,7 +7,7 @@ namespace CaveDwellersTest.MonstersForTest
     public class FastMonster : Monster
     {
         public FastMonster(WorldMatrix worldMatrix)
-            : base(worldMatrix)
+            : base(worldMatrix, new Rnd())
         {
         }
 

@@ -1,3 +1,4 @@
+using System;
 using System.Windows.Media;
 using CaveDwellers.Core;
 using CaveDwellers.Positionables;
@@ -7,6 +8,7 @@ namespace CaveDwellers.UI
 {
     public class GamePresenter : IGamePresenter
     {
+        private readonly IRnd _randomizer = new Rnd();
         private readonly IWantToBeNotifiedOfGameTimeElapsedEvents _view;
         private readonly WorldMatrix _world = new WorldMatrix();
         private readonly GameLoop _gameLoop = new GameLoop();
@@ -31,10 +33,10 @@ namespace CaveDwellers.UI
                 _world.Add(190, i, new Stone());
             }
 
-            _world.Add(50, 25, new Monster(_world));
-            _world.Add(150, 25, new Monster(_world));
-            _world.Add(50, 125, new Monster(_world));
-            _world.Add(150, 125, new Monster(_world));
+            _world.Add(50, 25, new Monster(_world, _randomizer));
+            _world.Add(150, 25, new Monster(_world, _randomizer));
+            _world.Add(50, 125, new Monster(_world, _randomizer));
+            _world.Add(150, 125, new Monster(_world, _randomizer));
 
             _goodGuy = new GoodGuy(_world);
             _world.Add(100, 100, _goodGuy);

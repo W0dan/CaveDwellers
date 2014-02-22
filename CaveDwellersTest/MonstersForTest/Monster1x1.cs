@@ -7,7 +7,7 @@ namespace CaveDwellersTest.MonstersForTest
     public class Monster1x1 : Monster
     {
         public Monster1x1(WorldMatrix worldMatrix)
-            : base(worldMatrix)
+            : base(worldMatrix, new Rnd())
         {
         }
 

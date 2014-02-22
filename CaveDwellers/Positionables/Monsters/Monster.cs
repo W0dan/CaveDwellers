@@ -1,4 +1,3 @@
-using System;
 using System.Windows;
 using CaveDwellers.Core;
 using CaveDwellers.Resources;
@@ -7,12 +6,13 @@ namespace CaveDwellers.Positionables.Monsters
 {
     public class Monster : IPositionable, IAutoMoveable
     {
-        protected static readonly Random Randomizer = new Random();
+        private readonly IRnd _randomizer;
 
         private readonly WorldMatrix _worldMatrix;
 
-        public Monster(WorldMatrix worldMatrix)
+        public Monster(WorldMatrix worldMatrix, IRnd randomizer)
         {
+            _randomizer = randomizer;
             _worldMatrix = worldMatrix;
         }
 
@@ -41,8 +41,8 @@ namespace CaveDwellers.Positionables.Monsters
                 return;
             }
 
-            var x = Randomizer.Next(1000);
-            var y = Randomizer.Next(1000);
+            var x = _randomizer.Next(1000);
+            var y = _randomizer.Next(1000);
             NextDestination = new Point(x, y);
             IsMoving = true;
             _worldMatrix.Move(this);

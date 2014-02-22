@@ -15,7 +15,7 @@ namespace CaveDwellers.Core
         public GameLoop()
         {
             _listeners = new List<IWantToBeNotifiedOfGameTimeElapsedEvents>();
-            _timer = new DispatcherTimer{Interval = new TimeSpan(0,0,0,0,20)};
+            _timer = new DispatcherTimer{Interval = new TimeSpan(0,0,0,0,50)};
             _timer.Tick += _timer_Tick;
         }
 

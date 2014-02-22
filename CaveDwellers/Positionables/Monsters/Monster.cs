@@ -5,7 +5,7 @@ using CaveDwellers.Resources;
 
 namespace CaveDwellers.Positionables.Monsters
 {
-    public class Monster : IPositionable, IMoveable
+    public class Monster : IPositionable, IAutoMoveable
     {
         protected static readonly Random Randomizer = new Random();
 
@@ -21,7 +21,7 @@ namespace CaveDwellers.Positionables.Monsters
             get { return new Size(10, 10); }
         }
 
-        public virtual int Speed { get { return 70; } }
+        public virtual int Speed { get { return 40; } }
 
         public ImageName Sprite
         {
@@ -33,7 +33,7 @@ namespace CaveDwellers.Positionables.Monsters
             IsMoving = false;
         }
 
-        public void DoAction()
+        public void Move()
         {
             if (IsMoving)
             {

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using CaveDwellers.Mathematics;
+using CaveDwellers.Positionables;
 using CaveDwellers.Positionables.Monsters;
 
 namespace CaveDwellers.Core
@@ -85,7 +86,7 @@ namespace CaveDwellers.Core
         }
 
         public void Move<T>(T @object)
-            where T : IMoveable, IPositionable
+            where T : IAutoMoveable, IPositionable
         {
             var currentLocation = _locations[@object];
             var destination = @object.NextDestination;
@@ -95,7 +96,7 @@ namespace CaveDwellers.Core
 
             var newLocation = Calculator.CalculateNewPosition(currentLocation, direction, @object.Speed, _timeElapsed);
             var distanceTraveled = Calculator.CalculateDistance(currentLocation, newLocation);
-            
+
             if (distanceTraveled >= distance || IsCollision(@object, newLocation) != null)
             {
                 @object.StopMoving();
@@ -103,7 +104,25 @@ namespace CaveDwellers.Core
             else
             {
                 RemoveFromLocation(@object);
-                Add(newLocation, @object);   
+                Add(newLocation, @object);
+            }
+        }
+
+        public void Move<T>(T @object, Direction direction)
+            where T : IUserMoveable, IPositionable
+        {
+            var currentLocation = _locations[@object];
+            var directionAngle = ((double) direction).ToRadians();
+            var newLocation = Calculator.CalculateNewPosition(currentLocation, directionAngle, @object.Speed, _timeElapsed);
+
+            if (IsCollision(@object, newLocation) != null)
+            {
+                @object.StopMoving();
+            }
+            else
+            {
+                RemoveFromLocation(@object);
+                Add(newLocation, @object);
             }
         }
 
@@ -120,10 +139,15 @@ namespace CaveDwellers.Core
         public void Notify(GameTime gameTime)
         {
             _timeElapsed = gameTime.MillisecondsElapsed;
-            foreach (var m in GetObjects<Monster>())
+            foreach (var m in GetObjects<IMoveable>())
             {
-                m.DoAction();
+                m.Move();
             }
+        }
+
+        public GoodGuy GoodGuy
+        {
+            get { return GetObjects<GoodGuy>().Single(); }
         }
     }
 }

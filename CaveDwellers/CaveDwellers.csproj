@@ -63,6 +63,7 @@
     <Compile Include="Core\GameTime.cs" />
     <Compile Include="Core\IWantToBeNotifiedOfGameTimeElapsedEvents.cs" />
     <Compile Include="Mathematics\Calculator.cs" />
+    <Compile Include="Positionables\GoodGuy.cs" />
     <Compile Include="Resources\ImageName.cs" />
     <Compile Include="Resources\Images.cs" />
     <Compile Include="Resources\ResourceProvider.cs" />
@@ -77,7 +78,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Core\IMoveable.cs" />
+    <Compile Include="Core\IAutoMoveable.cs" />
     <Compile Include="Core\WorldMatrix.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

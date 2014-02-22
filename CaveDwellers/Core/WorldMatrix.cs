@@ -146,12 +146,6 @@ namespace CaveDwellers.Core
             {
                 m.Move();
             }
-            GoodGuy.Notify(gameTime);
-        }
-
-        public GoodGuy GoodGuy
-        {
-            get { return GetObjects<GoodGuy>().Single(); }
         }
     }
 }

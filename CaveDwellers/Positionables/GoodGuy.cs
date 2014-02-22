@@ -71,11 +71,10 @@ namespace CaveDwellers.Positionables
 
         public void CollidedWith(IPositionable @object)
         {
-            if (!HasTimeout() && @object is Monster)
-            {
-                _life--;
-                _timeOutFrom = DateTime.Now;
-            }
+            if (HasTimeout() || !(@object is Monster)) return;
+
+            _life--;
+            _timeOutFrom = DateTime.Now;
         }
 
         private bool HasTimeout()
@@ -85,12 +84,11 @@ namespace CaveDwellers.Positionables
 
         public void Notify(GameTime gameTime)
         {
-            if (_timeOutFrom.HasValue)
+            if (!_timeOutFrom.HasValue) return;
+
+            if (gameTime.Time.Subtract(_timeOutFrom.Value).TotalSeconds >= 1)
             {
-                if (gameTime.Time.Subtract(_timeOutFrom.Value).TotalSeconds >= 3)
-                {
-                    _timeOutFrom = null;
-                }
+                _timeOutFrom = null;
             }
         }
     }

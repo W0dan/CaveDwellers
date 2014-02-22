@@ -10,6 +10,7 @@ namespace CaveDwellers.UI
         private readonly IWantToBeNotifiedOfGameTimeElapsedEvents _view;
         private readonly WorldMatrix _world = new WorldMatrix();
         private readonly GameLoop _gameLoop = new GameLoop();
+        private readonly GoodGuy _goodGuy;
 
         public GamePresenter(IWantToBeNotifiedOfGameTimeElapsedEvents view)
         {
@@ -30,31 +31,14 @@ namespace CaveDwellers.UI
                 _world.Add(190, i, new Stone());
             }
 
-            //_world.Add(50, 50, new Monster(_world));
-            //_world.Add(25, 50, new Monster(_world));
             _world.Add(50, 25, new Monster(_world));
-            //_world.Add(75, 50, new Monster(_world));
-            //_world.Add(50, 75, new Monster(_world));
-
-            //_world.Add(150, 50, new Monster(_world));
-            //_world.Add(125, 50, new Monster(_world));
             _world.Add(150, 25, new Monster(_world));
-            //_world.Add(175, 50, new Monster(_world));
-            //_world.Add(150, 75, new Monster(_world));
-
-            //_world.Add(50, 150, new Monster(_world));
-            //_world.Add(25, 150, new Monster(_world));
             _world.Add(50, 125, new Monster(_world));
-            //_world.Add(75, 150, new Monster(_world));
-            //_world.Add(50, 175, new Monster(_world));
-
-            //_world.Add(150, 150, new Monster(_world));
-            //_world.Add(125, 150, new Monster(_world));
             _world.Add(150, 125, new Monster(_world));
-            //_world.Add(175, 150, new Monster(_world));
-            //_world.Add(150, 175, new Monster(_world));
 
-            _world.Add(100, 100, new GoodGuy(_world));
+            _goodGuy = new GoodGuy(_world);
+            _world.Add(100, 100, _goodGuy);
+            _gameLoop.Register(_goodGuy);
 
             _gameLoop.Start();
         }
@@ -87,12 +71,12 @@ namespace CaveDwellers.UI
 
         public void Move(Direction direction)
         {
-            _world.GoodGuy.StartMoving(direction);
+            _goodGuy.StartMoving(direction);
         }
 
         public void StopMoving()
         {
-            _world.GoodGuy.StopMoving();
+            _goodGuy.StopMoving();
         }
     }
 }

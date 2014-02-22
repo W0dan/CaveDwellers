@@ -17,12 +17,12 @@ namespace CaveDwellers
 
         private IGamePresenter _gamePresenter;
 
-        private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             _gamePresenter = new GamePresenter(this);
         }
 
-        private void TekenBlad_OnKeyDown(object sender, KeyEventArgs e)
+        private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             if (_gamePresenter.Level_is_finished || _gamePresenter.Game_is_over)
                 return;
@@ -65,6 +65,11 @@ namespace CaveDwellers
                         break;
                 }
             }
+        }
+
+        private void Window_KeyUp(object sender, KeyEventArgs e)
+        {
+            _gamePresenter.StopMoving();
         }
 
         public void Notify(GameTime gameTime)

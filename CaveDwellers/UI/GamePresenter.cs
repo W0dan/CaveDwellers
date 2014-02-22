@@ -89,5 +89,10 @@ namespace CaveDwellers.UI
         {
             _world.GoodGuy.StartMoving(direction);
         }
+
+        public void StopMoving()
+        {
+            _world.GoodGuy.StopMoving();
+        }
     }
 }

@@ -39,6 +39,11 @@ namespace CaveDwellers.Positionables
 
         public void StartMoving(Direction direction)
         {
+            if (IsMoving)
+            {
+                return;
+            }
+
             _direction = direction;
             IsMoving = true;
             _worldMatrix.Move(this, direction);

@@ -10,5 +10,6 @@ namespace CaveDwellers.UI
         bool Game_is_over { get; }
         void Fire(Direction direction);
         void Move(Direction direction);
+        void StopMoving();
     }
 }

@@ -51,5 +51,14 @@ namespace CaveDwellers.Positionables.Monsters
         public Point NextDestination { get; private set; }
 
         private bool IsMoving { get; set; }
+
+        public void CollidedWith(IPositionable @object)
+        {
+            var goodGuy = @object as GoodGuy;
+            if (goodGuy != null)
+            {
+                goodGuy.CollidedWith(this);
+            }
+        }
     }
 }

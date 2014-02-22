@@ -1,13 +1,17 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using CaveDwellers.Core;
+using CaveDwellers.Positionables.Monsters;
 using CaveDwellers.Resources;
 
 namespace CaveDwellers.Positionables
 {
-    public class GoodGuy : IUserMoveable, IPositionable
+    public class GoodGuy : IUserMoveable, IPositionable, IWantToBeNotifiedOfGameTimeElapsedEvents
     {
         private readonly WorldMatrix _worldMatrix;
         private Direction _direction;
+        private int _life = 3;
+        private DateTime? _timeOutFrom = null;
 
         public GoodGuy(WorldMatrix worldMatrix)
         {
@@ -58,7 +62,36 @@ namespace CaveDwellers.Positionables
 
         public ImageName Sprite
         {
-            get { return Images.Smiley; }
+            get {
+                return HasTimeout() 
+                    ? Images.SmileyTimeout 
+                    : Images.Smiley;
+            }
+        }
+
+        public void CollidedWith(IPositionable @object)
+        {
+            if (!HasTimeout() && @object is Monster)
+            {
+                _life--;
+                _timeOutFrom = DateTime.Now;
+            }
+        }
+
+        private bool HasTimeout()
+        {
+            return _timeOutFrom.HasValue;
+        }
+
+        public void Notify(GameTime gameTime)
+        {
+            if (_timeOutFrom.HasValue)
+            {
+                if (gameTime.Time.Subtract(_timeOutFrom.Value).TotalSeconds >= 3)
+                {
+                    _timeOutFrom = null;
+                }
+            }
         }
     }
 }

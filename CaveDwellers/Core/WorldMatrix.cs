@@ -97,9 +97,11 @@ namespace CaveDwellers.Core
             var newLocation = Calculator.CalculateNewPosition(currentLocation, direction, @object.Speed, _timeElapsed);
             var distanceTraveled = Calculator.CalculateDistance(currentLocation, newLocation);
 
-            if (distanceTraveled >= distance || IsCollision(@object, newLocation) != null)
+            var subject = IsCollision(@object, newLocation);
+            if (distanceTraveled >= distance || subject != null)
             {
                 @object.StopMoving();
+                @object.CollidedWith(subject);
             }
             else
             {
@@ -108,21 +110,22 @@ namespace CaveDwellers.Core
             }
         }
 
-        public void Move<T>(T @object, Direction direction)
-            where T : IUserMoveable, IPositionable
+        public void Move(GoodGuy goodGuy, Direction direction)
         {
-            var currentLocation = _locations[@object];
+            var currentLocation = _locations[goodGuy];
             var directionAngle = ((double) direction).ToRadians();
-            var newLocation = Calculator.CalculateNewPosition(currentLocation, directionAngle, @object.Speed, _timeElapsed);
+            var newLocation = Calculator.CalculateNewPosition(currentLocation, directionAngle, goodGuy.Speed, _timeElapsed);
 
-            if (IsCollision(@object, newLocation) != null)
+            var subject = IsCollision(goodGuy, newLocation);
+            if (subject != null)
             {
-                @object.StopMoving();
+                goodGuy.StopMoving();
+                goodGuy.CollidedWith(subject);
             }
             else
             {
-                RemoveFromLocation(@object);
-                Add(newLocation, @object);
+                RemoveFromLocation(goodGuy);
+                Add(newLocation, goodGuy);
             }
         }
 
@@ -143,6 +146,7 @@ namespace CaveDwellers.Core
             {
                 m.Move();
             }
+            GoodGuy.Notify(gameTime);
         }
 
         public GoodGuy GoodGuy

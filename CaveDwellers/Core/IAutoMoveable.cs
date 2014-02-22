@@ -7,6 +7,7 @@ namespace CaveDwellers.Core
         int Speed { get; }
         void StopMoving();
         void Move();
+        void CollidedWith(IPositionable @object);
     }
 
     public interface IAutoMoveable : IMoveable

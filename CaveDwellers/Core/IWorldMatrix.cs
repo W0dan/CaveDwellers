@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Windows;
+using CaveDwellers.Core.Movement;
+using CaveDwellers.Core.TimeManagement;
 using CaveDwellers.Positionables;
 
 namespace CaveDwellers.Core

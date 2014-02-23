@@ -3,6 +3,7 @@ using System.Windows;
 using CaveDwellers.Core;
 using CaveDwellers.Positionables;
 using CaveDwellers.Positionables.Monsters;
+using CaveDwellers.Utility;
 using CaveDwellersTest.MonstersForTest;
 using CaveDwellersTest.StonesForTest;
 

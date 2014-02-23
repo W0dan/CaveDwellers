@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Windows;
 using CaveDwellers.Core;
+using CaveDwellers.Core.TimeManagement;
 using CaveDwellers.Positionables.Monsters;
+using CaveDwellers.Utility;
 using CaveDwellersTest.MonstersForTest;
 using Moq;
 using NUnit.Framework;

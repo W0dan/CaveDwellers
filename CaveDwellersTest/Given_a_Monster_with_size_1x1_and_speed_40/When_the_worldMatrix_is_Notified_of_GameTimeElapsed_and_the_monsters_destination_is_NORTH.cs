@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Windows;
 using CaveDwellers.Core;
+using CaveDwellers.Core.TimeManagement;
+using CaveDwellers.Mathematics;
 using CaveDwellers.Positionables.Monsters;
+using CaveDwellers.Utility;
 using CaveDwellersTest.MonstersForTest;
 using Moq;
 using NUnit.Framework;
@@ -15,6 +18,7 @@ namespace CaveDwellersTest.Given_a_Monster_with_size_1x1_and_speed_40
         private readonly Point _oldLocation = new Point(-50, 0);
         private readonly Point _expectedNewLocation = new Point(-50, -4);
         private Mock<IRnd> _rndMock;
+        private double _oldDistance;
 
         protected override void Arrange()
         {
@@ -26,6 +30,10 @@ namespace CaveDwellersTest.Given_a_Monster_with_size_1x1_and_speed_40
             _worldMatrix.Notify(new GameTime(new DateTime(2014, 2, 23, 20, 0, 0, 0), 100));
             _monster = new Monster1x1(_worldMatrix, _rndMock.Object);
             _worldMatrix.Add(_oldLocation, _monster);
+
+            var locationOfMonster = _worldMatrix.GetLocationOf(_monster);
+            Assert.IsNotNull(locationOfMonster);
+            _oldDistance = Calculator.CalculateDistance(locationOfMonster.Value, _monster.NextDestination);
         }
 
         protected override void Act()
@@ -53,6 +61,16 @@ namespace CaveDwellersTest.Given_a_Monster_with_size_1x1_and_speed_40
         public void No_reference_to_the_monster_is_found_at_the_old_location()
         {
             Assert.IsNull(_worldMatrix.GetObjectAt(_oldLocation));
+        }
+
+        [Test]
+        public void The_distance_between_itself_and_the_destination_becomes_smaller()
+        {
+            var locationOfMonster = _worldMatrix.GetLocationOf(_monster);
+            Assert.IsNotNull(locationOfMonster);
+            var newDistance = Calculator.CalculateDistance(locationOfMonster.Value, _monster.NextDestination);
+
+            Assert.True(_oldDistance > newDistance, string.Format("the new distance ({0}) is not smaller than the old distance ({1})", newDistance, _oldDistance));
         }
     }
 }

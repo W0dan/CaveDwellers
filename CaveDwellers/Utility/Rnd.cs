@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CaveDwellers.Core
+namespace CaveDwellers.Utility
 {
     public class Rnd : IRnd
     {
@@ -10,10 +10,5 @@ namespace CaveDwellers.Core
         {
             return _random.Next(maxValue);
         }
-    }
-
-    public interface IRnd
-    {
-        int Next(int maxValue);
     }
 }

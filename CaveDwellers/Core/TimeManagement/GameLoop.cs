@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Threading;
 
-namespace CaveDwellers.Core
+namespace CaveDwellers.Core.TimeManagement
 {
     public class GameLoop
     {

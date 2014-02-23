@@ -59,11 +59,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Core\GameLoop.cs" />
-    <Compile Include="Core\GameTime.cs" />
-    <Compile Include="Core\IWantToBeNotifiedOfGameTimeElapsedEvents.cs" />
+    <Compile Include="Core\TimeManagement\GameLoop.cs" />
+    <Compile Include="Core\TimeManagement\GameTime.cs" />
+    <Compile Include="Core\Movement\IMoveable.cs" />
+    <Compile Include="Utility\IRnd.cs" />
+    <Compile Include="Core\Movement\IUserMoveable.cs" />
+    <Compile Include="Core\TimeManagement\IWantToBeNotifiedOfGameTimeElapsedEvents.cs" />
     <Compile Include="Core\IWorldMatrix.cs" />
-    <Compile Include="Core\Rnd.cs" />
+    <Compile Include="Utility\Rnd.cs" />
     <Compile Include="Mathematics\Calculator.cs" />
     <Compile Include="Positionables\GoodGuy.cs" />
     <Compile Include="Resources\ImageName.cs" />
@@ -80,7 +83,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Core\IAutoMoveable.cs" />
+    <Compile Include="Core\Movement\IAutoMoveable.cs" />
     <Compile Include="Core\WorldMatrix.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -89,7 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\IPositionable.cs" />
-    <Compile Include="Core\Direction.cs" />
+    <Compile Include="Core\Movement\Direction.cs" />
     <Compile Include="Positionables\Monsters\Monster.cs" />
     <Compile Include="Positionables\Stone.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

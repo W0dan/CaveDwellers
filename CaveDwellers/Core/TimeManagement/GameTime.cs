@@ -1,6 +1,6 @@
 using System;
 
-namespace CaveDwellers.Core
+namespace CaveDwellers.Core.TimeManagement
 {
     public class GameTime
     {

@@ -1,6 +1,8 @@
 using System.Windows;
 using CaveDwellers.Core;
+using CaveDwellers.Core.Movement;
 using CaveDwellers.Resources;
+using CaveDwellers.Utility;
 
 namespace CaveDwellers.Positionables.Monsters
 {
@@ -16,10 +18,7 @@ namespace CaveDwellers.Positionables.Monsters
             _worldMatrix = worldMatrix;
         }
 
-        public virtual Size Size
-        {
-            get { return new Size(10, 10); }
-        }
+        public virtual Size Size { get { return new Size(10, 10); } }
 
         public virtual int Speed { get { return 40; } }
 

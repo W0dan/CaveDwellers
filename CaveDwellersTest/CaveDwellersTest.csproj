@@ -52,10 +52,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AAATest.cs" />
+    <Compile Include="Extensions\PointExtensions.cs" />
     <Compile Include="Given_a_Level_10x10\When_it_is constructed.cs" />
     <Compile Include="Given_a_Mathematics_Calculator\When_CalculateDirection_is_called.cs" />
     <Compile Include="Given_a_Mathematics_Calculator\When_CalculateNewPosition_is_called.cs" />
     <Compile Include="Given_a_Mathematics_Calculator\When_CalculateDistance_is_called.cs" />
+    <Compile Include="Given_a_Monster\When_the_worldMatrix_is_Notified_of_GameTimeElapsed_and_the_monsters_destination_is_NORTHish.cs" />
+    <Compile Include="Given_a_Monster\When_the_worldMatrix_is_Notified_of_GameTimeElapsed_and_the_monsters_destination_is_NORTHEAST.cs" />
     <Compile Include="Given_a_Monster_with_size_1x1_and_speed_40\When_the_worldMatrix_is_Notified_of_GameTimeElapsed_and_the_monsters_destination_is_EAST.cs">
       <SubType>Code</SubType>
     </Compile>

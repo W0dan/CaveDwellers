@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using CaveDwellers.Mathematics;
+using CaveDwellersTest.Extensions;
 using NUnit.Framework;
 
 namespace CaveDwellersTest.Given_a_Mathematics_Calculator

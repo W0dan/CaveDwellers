@@ -1,8 +1,11 @@
 using System;
 using System.Windows.Media;
 using CaveDwellers.Core;
+using CaveDwellers.Core.Movement;
+using CaveDwellers.Core.TimeManagement;
 using CaveDwellers.Positionables;
 using CaveDwellers.Positionables.Monsters;
+using CaveDwellers.Utility;
 
 namespace CaveDwellers.UI
 {

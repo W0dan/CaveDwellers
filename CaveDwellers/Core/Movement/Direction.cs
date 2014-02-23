@@ -1,4 +1,4 @@
-namespace CaveDwellers.Core
+namespace CaveDwellers.Core.Movement
 {
     public enum Direction
     {

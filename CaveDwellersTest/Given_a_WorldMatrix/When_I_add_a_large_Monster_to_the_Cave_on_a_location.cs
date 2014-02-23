@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using CaveDwellers.Core;
+using CaveDwellers.Utility;
 using CaveDwellersTest.MonstersForTest;
 using NUnit.Framework;
 

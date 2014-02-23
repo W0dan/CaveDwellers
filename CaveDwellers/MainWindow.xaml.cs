@@ -1,6 +1,8 @@
 ﻿using System.Windows;
 using System.Windows.Input;
 using CaveDwellers.Core;
+using CaveDwellers.Core.Movement;
+using CaveDwellers.Core.TimeManagement;
 using CaveDwellers.UI;
 
 namespace CaveDwellers

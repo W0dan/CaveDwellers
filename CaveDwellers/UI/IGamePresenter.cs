@@ -1,5 +1,6 @@
 using System.Windows.Media;
 using CaveDwellers.Core;
+using CaveDwellers.Core.Movement;
 
 namespace CaveDwellers.UI
 {

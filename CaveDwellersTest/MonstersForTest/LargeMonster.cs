@@ -1,6 +1,7 @@
 using System.Windows;
 using CaveDwellers.Core;
 using CaveDwellers.Positionables.Monsters;
+using CaveDwellers.Utility;
 
 namespace CaveDwellersTest.MonstersForTest
 {

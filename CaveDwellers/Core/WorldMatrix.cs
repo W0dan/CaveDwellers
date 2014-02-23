@@ -3,11 +3,10 @@ using System.Linq;
 using System.Windows;
 using CaveDwellers.Mathematics;
 using CaveDwellers.Positionables;
-using CaveDwellers.Positionables.Monsters;
 
 namespace CaveDwellers.Core
 {
-    public class WorldMatrix : IWantToBeNotifiedOfGameTimeElapsedEvents
+    public class WorldMatrix : IWorldMatrix
     {
         private const int Scale = 1;
         private readonly Dictionary<IPositionable, Point> _locations = new Dictionary<IPositionable, Point>();

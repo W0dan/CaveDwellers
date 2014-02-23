@@ -8,9 +8,9 @@ namespace CaveDwellers.Positionables.Monsters
     {
         private readonly IRnd _randomizer;
 
-        private readonly WorldMatrix _worldMatrix;
+        private readonly IWorldMatrix _worldMatrix;
 
-        public Monster(WorldMatrix worldMatrix, IRnd randomizer)
+        public Monster(IWorldMatrix worldMatrix, IRnd randomizer)
         {
             _randomizer = randomizer;
             _worldMatrix = worldMatrix;

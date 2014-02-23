@@ -34,7 +34,7 @@ namespace CaveDwellersTest.LevelsForTest
 
         private Monster CreateMonster()
         {
-            return new Monster1x1(_world);
+            return new Monster1x1(_world, new Rnd());
         }
 
         private static Stone CreateStone()

@@ -11,7 +11,7 @@ namespace CaveDwellers.Positionables
         private readonly WorldMatrix _worldMatrix;
         private Direction _direction;
         private int _life = 3;
-        private DateTime? _timeOutFrom = null;
+        private DateTime? _timeOutFrom;
 
         public GoodGuy(WorldMatrix worldMatrix)
         {
@@ -21,11 +21,6 @@ namespace CaveDwellers.Positionables
         public int Speed
         {
             get { return 50; }
-        }
-
-        public Point NextDestination
-        {
-            get { throw new System.NotImplementedException(); }
         }
 
         public void StopMoving()

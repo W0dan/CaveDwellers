@@ -1,32 +1,40 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using CaveDwellers.Core;
 using CaveDwellers.Positionables.Monsters;
 using CaveDwellersTest.MonstersForTest;
+using Moq;
 using NUnit.Framework;
 
 namespace CaveDwellersTest.Given_a_Monster_with_size_1x1_and_speed_1
 {
-    public class When_I_tell_the_monster_to_move_in_the_DOWN_direction : AAATest
+    public class When_I_tell_the_monster_to_move_and_it_is_going_SOUTH : AAATest
     {
         private Monster _monster;
         private WorldMatrix _worldMatrix;
-        private readonly Point _expectedNewLocation = new Point(0, 1);
-        private readonly Point _oldLocation = new Point(0, 0);
+        private readonly Point _oldLocation = new Point(50, 0);
+        private readonly Point _expectedNewLocation = new Point(50, 4);
+        private Mock<IRnd> _rndMock;
 
         protected override void Arrange()
         {
+            _rndMock = new Mock<IRnd>();
+            _rndMock
+                .Setup(r => r.Next(It.IsAny<int>()))
+                .Returns(50);
             _worldMatrix = new WorldMatrix();
-            _monster = new Monster1x1(_worldMatrix);
+            _worldMatrix.Notify(new GameTime(new DateTime(2014, 2, 23, 20, 0, 0, 0), 100));
+            _monster = new Monster1x1(_worldMatrix, _rndMock.Object);
             _worldMatrix.Add(_oldLocation, _monster);
         }
 
         protected override void Act()
         {
-            _monster.Move(Direction.Down);
+            _worldMatrix.Notify(new GameTime(new DateTime(2014, 2, 23, 20, 0, 0, 100), 100));
         }
 
         [Test]
-        public void The_monster_is_positioned_1_lower_in_the_WorldMatrix()
+        public void The_monster_is_positioned_4_lower_in_the_WorldMatrix()
         {
             Assert.AreEqual(_expectedNewLocation, _worldMatrix.GetLocationOf(_monster));
         }

@@ -6,12 +6,12 @@ namespace CaveDwellersTest.MonstersForTest
 {
     public class FastMonster : Monster
     {
-        public FastMonster(WorldMatrix worldMatrix)
-            : base(worldMatrix, new Rnd())
+        public FastMonster(WorldMatrix worldMatrix, IRnd rnd)
+            : base(worldMatrix, rnd)
         {
         }
 
-        public override int Speed { get { return 3; } }
+        public override int Speed { get { return 80; } }
 
         public override Size Size { get { return new Size(1, 1); } }
     }

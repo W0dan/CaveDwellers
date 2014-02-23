@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using CaveDwellers.Core;
-using CaveDwellers.Positionables.Monsters;
 using CaveDwellersTest.MonstersForTest;
 using NUnit.Framework;
 
@@ -19,7 +18,7 @@ namespace CaveDwellersTest.Given_a_WorldMatrix
         protected override void Arrange()
         {
             _worldMatrix = new WorldMatrix();
-            _theMonster = new LargeMonster(_worldMatrix);
+            _theMonster = new LargeMonster(_worldMatrix, new Rnd());
         }
 
         [Test]

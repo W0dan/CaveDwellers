@@ -56,7 +56,20 @@
     <Compile Include="Given_a_Mathematics_Calculator\When_CalculateDirection_is_called.cs" />
     <Compile Include="Given_a_Mathematics_Calculator\When_CalculateNewPosition_is_called.cs" />
     <Compile Include="Given_a_Mathematics_Calculator\When_CalculateDistance_is_called.cs" />
-    <Compile Include="Given_a_Monster_with_size_1x1_and_speed_1\When_I_tell_the_monster_to_move_and_it_is_going_SOUTH.cs">
+    <Compile Include="Given_a_Monster_with_size_1x1_and_speed_40\When_the_worldMatrix_is_Notified_of_GameTimeElapsed_and_the_monsters_destination_is_EAST.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Given_a_Monster_with_size_1x1_and_speed_40\When_the_worldMatrix_is_Notified_of_GameTimeElapsed_and_the_monsters_destination_is_NORTH.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Given_a_Monster_with_size_1x1_and_speed_40\When_the_worldMatrix_is_Notified_of_GameTimeElapsed_and_the_monsters_destination_is_SOUTH.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Given_a_Monster_with_size_1x1_and_speed_40\When_the_worldMatrix_is_Notified_of_GameTimeElapsed_and_the_monsters_destination_is_WEST.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Given_a_Monster_with_size_1x1_and_speed_80\When_the_worldMatrix_is_Notified_of_GameTimeElapsed_and_the_monsters_destination_is_NORTH.cs" />
+    <Compile Include="Given_a_Monster_with_size_3x3_and_speed_40\When_the_worldMatrix_is_Notified_of_GameTimeElapsed_and_the_monsters_destination_is_NORTH.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Given_a_WorldMatrix\When_I_add_a_meduim_sized_Monster_to_the_Cave_on_a_location.cs" />
@@ -80,10 +93,7 @@
       <Name>CaveDwellers</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Given_a_Monster_with_size_1x1_and_speed_3\" />
-    <Folder Include="Given_a_Monster_with_size_3x3_and_speed_1\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

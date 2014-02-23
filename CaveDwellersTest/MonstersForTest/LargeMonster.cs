@@ -6,8 +6,8 @@ namespace CaveDwellersTest.MonstersForTest
 {
     public class LargeMonster : Monster
     {
-        public LargeMonster(WorldMatrix worldMatrix) 
-            : base(worldMatrix, new Rnd())
+        public LargeMonster(WorldMatrix worldMatrix, IRnd rnd) 
+            : base(worldMatrix, rnd)
         {
         }
 

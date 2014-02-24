@@ -15,7 +15,7 @@ namespace CaveDwellersTest.Given_a_Monster
     {
         private Monster _monster;
         private WorldMatrix _worldMatrix;
-        private readonly Point _oldLocation = new Point(0, 100);
+        private readonly Point _oldLocation = new Point(-50, 50);
         private Mock<IRnd> _rndMock;
         private double _oldDistance;
 
@@ -24,7 +24,7 @@ namespace CaveDwellersTest.Given_a_Monster
             _rndMock = new Mock<IRnd>();
             _rndMock
                 .Setup(r => r.Next(It.IsAny<int>()))
-                .Returns(50);
+                .Returns(0);
             _worldMatrix = new WorldMatrix();
             _worldMatrix.Notify(new GameTime(new DateTime(2014, 2, 23, 20, 0, 0, 0), 100));
             _monster = new Monster1x1(_worldMatrix, _rndMock.Object);
@@ -47,6 +47,7 @@ namespace CaveDwellersTest.Given_a_Monster
             Assert.IsNotNull(locationOfMonster);
             var newDistance = Calculator.CalculateDistance(locationOfMonster.Value, _monster.NextDestination);
 
+            Assert.True(locationOfMonster.Value.X > -50 && locationOfMonster.Value.Y < 50, string.Format("the new location must lie closer to (0,0), but is now {0}", locationOfMonster));
             Assert.True(_oldDistance > newDistance, string.Format("the new distance ({0}) is not smaller than the old distance ({1})", newDistance, _oldDistance));
         }
     }

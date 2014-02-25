@@ -73,7 +73,7 @@ namespace CaveDwellersTest.Given_a_Monster
             Assert.IsNotNull(locationOfMonster);
             var newDistance = Calculator.CalculateDistance(locationOfMonster.Value, _monster2.NextDestination);
 
-            Assert.True(_oldDistance1 > newDistance, string.Format("the new distance ({0}) is not smaller than the old distance ({1})", newDistance, _oldDistance2));
+            Assert.True(_oldDistance2 > newDistance, string.Format("the new distance ({0}) is not smaller than the old distance ({1})", newDistance, _oldDistance2));
         }
     }
 }

@@ -17,19 +17,17 @@ namespace CaveDwellersTest.Given_a_Monster
         private Mock<IRnd> _rndMock;
 
         private Monster _monster1;
-        private readonly Point _oldLocation1 = new Point(0, -49);
-        private double _oldDistance1;
+        private readonly Point _oldLocation1 = new Point(-50, -1);
 
         private Monster _monster2;
-        private readonly Point _oldLocation2 = new Point(0, -51);
-        private double _oldDistance2;
+        private readonly Point _oldLocation2 = new Point(-50, 1);
 
         protected override void Arrange()
         {
             _rndMock = new Mock<IRnd>();
             _rndMock
                 .Setup(r => r.Next(It.IsAny<int>()))
-                .Returns(50);
+                .Returns(0);
             _worldMatrix = new WorldMatrix();
             _worldMatrix.Notify(new GameTime(new DateTime(2014, 2, 23, 20, 0, 0, 0), 100));
 
@@ -40,15 +38,6 @@ namespace CaveDwellersTest.Given_a_Monster
 
             //we need a first notify in order to have a baseline
             _worldMatrix.Notify(new GameTime(new DateTime(2014, 2, 23, 20, 0, 0, 100), 100));
-            _oldDistance1 = GetDistance(_monster1);
-            _oldDistance2 = GetDistance(_monster2);
-        }
-
-        private double GetDistance(Monster monster)
-        {
-            var locationOfMonster = _worldMatrix.GetLocationOf(monster);
-            Assert.IsNotNull(locationOfMonster);
-            return Calculator.CalculateDistance(locationOfMonster.Value, monster.NextDestination);
         }
 
         protected override void Act()
@@ -62,7 +51,7 @@ namespace CaveDwellersTest.Given_a_Monster
             var locationOfMonster = _worldMatrix.GetLocationOf(_monster1);
             Assert.IsNotNull(locationOfMonster);
 
-            Assert.True(locationOfMonster.Value.X < 0 && locationOfMonster.Value.Y <= -49, string.Format("the new location must lie closer to (-50,-50), but is now {0}", locationOfMonster));
+            Assert.True(locationOfMonster.Value.X > -50 && locationOfMonster.Value.Y >= -1, string.Format("the new location must lie closer to (0,0), but is now {0}", locationOfMonster));
         }
 
         [Test]
@@ -71,7 +60,7 @@ namespace CaveDwellersTest.Given_a_Monster
             var locationOfMonster = _worldMatrix.GetLocationOf(_monster2);
             Assert.IsNotNull(locationOfMonster);
 
-            Assert.True(locationOfMonster.Value.X < 0 && locationOfMonster.Value.Y >= -51, string.Format("the new location must lie closer to (-50,-50), but is now {0}", locationOfMonster));
+            Assert.True(locationOfMonster.Value.X > -50 && locationOfMonster.Value.Y <= 1, string.Format("the new location must lie closer to (0,0), but is now {0}", locationOfMonster));
         }
     }
 }

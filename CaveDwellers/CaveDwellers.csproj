@@ -59,6 +59,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Core\Shooting\Bullet.cs" />
+    <Compile Include="Core\Shooting\ICanBeHitByAProjectile.cs" />
+    <Compile Include="Core\Shooting\ICanShootAProjectile.cs" />
+    <Compile Include="Core\Shooting\Projectile.cs" />
     <Compile Include="Core\TimeManagement\GameLoop.cs" />
     <Compile Include="Core\TimeManagement\GameTime.cs" />
     <Compile Include="Core\Movement\IMoveable.cs" />

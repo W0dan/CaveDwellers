@@ -22,9 +22,8 @@ namespace CaveDwellersTest.Given_a_Monster
         protected override void Arrange()
         {
             _rndMock = new Mock<IRnd>();
-            _rndMock
-                .Setup(r => r.Next(It.IsAny<int>()))
-                .Returns(0);
+            _rndMock.Setup(r => r.NextX()).Returns(0);
+            _rndMock.Setup(r => r.NextY()).Returns(0);
             _worldMatrix = new WorldMatrix();
             _worldMatrix.Notify(new GameTime(new DateTime(2014, 2, 23, 20, 0, 0, 0), 100));
             _monster = new Monster1x1(_worldMatrix, _rndMock.Object);

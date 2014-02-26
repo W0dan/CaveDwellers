@@ -40,8 +40,8 @@ namespace CaveDwellers.Positionables.Monsters
                 return;
             }
 
-            var x = _randomizer.Next(1000);
-            var y = _randomizer.Next(1000);
+            var x = _randomizer.NextX();
+            var y = _randomizer.NextY();
             NextDestination = new Point(x, y);
             IsMoving = true;
             _worldMatrix.Move(this);

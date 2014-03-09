@@ -9,5 +9,7 @@
         public static readonly ImageName Ghost = new ImageName( @"Resources\Images\Ghost.png");
 
         public static readonly ImageName Stone01 = new ImageName( @"Resources\Images\tile_0_0.png");
+
+        public static readonly ImageName GameOver = new ImageName( @"Resources\Images\game-over.jpg");
     }
 }

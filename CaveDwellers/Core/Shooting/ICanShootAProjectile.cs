@@ -2,6 +2,6 @@
 {
     public interface ICanShootAProjectile
     {
-        Projectile Shoot();
+        Projectile Shoot(double direction);
     }
 }

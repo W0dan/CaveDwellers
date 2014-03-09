@@ -4,7 +4,7 @@ namespace CaveDwellers.Core.Shooting
 {
     public class Bullet : Projectile
     {
-        public Bullet(ICanShootAProjectile firedBy) : base(firedBy)
+        public Bullet(ICanShootAProjectile firedBy, double direction) : base(firedBy, direction)
         {
         }
 

@@ -1,9 +1,11 @@
+using System.Windows;
 using System.Windows.Media;
 using CaveDwellers.Core;
 using CaveDwellers.Core.Movement;
 using CaveDwellers.Core.TimeManagement;
 using CaveDwellers.Positionables;
 using CaveDwellers.Positionables.Monsters;
+using CaveDwellers.Resources;
 using CaveDwellers.Utility;
 
 namespace CaveDwellers.UI
@@ -58,12 +60,33 @@ namespace CaveDwellers.UI
         {
             var gameDrawing = new GameDrawing();
 
+            if (_goodGuy.Life <= 0)
+            {
+                gameDrawing.AddImage(Images.GameOver, new Point(0, 0), new Size(1920, 1080));
+            }
+            else
+            {
+                DrawGameplayObjects(gameDrawing);
+                DrawScore(gameDrawing);
+            }
+
+            return gameDrawing.GetImage();
+        }
+
+        private void DrawScore(GameDrawing gameDrawing)
+        {
+            for (var i = 0; i < _goodGuy.Life; i++)
+            {
+                gameDrawing.AddImage(_goodGuy.Sprite, new Point(-50 + (i * _goodGuy.Size.Width), 0), _goodGuy.Size);
+            }
+        }
+
+        private void DrawGameplayObjects(GameDrawing gameDrawing)
+        {
             foreach (var o in _world.GetObjects())
             {
                 gameDrawing.AddImage(o.Key.Sprite, o.Value, o.Key.Size);
             }
-
-            return gameDrawing.GetImage();
         }
 
         public bool Level_is_finished

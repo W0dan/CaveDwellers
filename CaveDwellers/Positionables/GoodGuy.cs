@@ -2,13 +2,14 @@
 using System.Windows;
 using CaveDwellers.Core;
 using CaveDwellers.Core.Movement;
+using CaveDwellers.Core.Shooting;
 using CaveDwellers.Core.TimeManagement;
 using CaveDwellers.Positionables.Monsters;
 using CaveDwellers.Resources;
 
 namespace CaveDwellers.Positionables
 {
-    public class GoodGuy : IUserMoveable, IPositionable, IWantToBeNotifiedOfGameTimeElapsedEvents
+    public class GoodGuy : IUserMoveable, IPositionable, IWantToBeNotifiedOfGameTimeElapsedEvents, ICanShootAProjectile
     {
         private readonly WorldMatrix _worldMatrix;
         private Direction _direction;
@@ -18,6 +19,11 @@ namespace CaveDwellers.Positionables
         public GoodGuy(WorldMatrix worldMatrix)
         {
             _worldMatrix = worldMatrix;
+        }
+
+        public int Life
+        {
+            get { return _life; }
         }
 
         public int Speed
@@ -87,6 +93,11 @@ namespace CaveDwellers.Positionables
             {
                 _timeOutFrom = null;
             }
+        }
+
+        public Projectile Shoot(double direction)
+        {
+            return new Bullet(this, direction);
         }
     }
 }
